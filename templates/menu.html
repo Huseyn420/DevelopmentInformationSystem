@@ -1,0 +1,16 @@
+<html>
+<head>
+    <title>Главное меню</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='style.css')}}">
+</head>
+<body>
+    <h2 align="center">Меню</h2>
+    <div class="inquiries">
+        {% for m in requests%}
+        <a href="{{m.url}}">{{m.condition}}</a>
+        <br><br>
+        {%endfor%}
+    </div>
+    <p align="center"><a href="?point=exit" class="button">Выйти</a></p>
+</body>
+</html>

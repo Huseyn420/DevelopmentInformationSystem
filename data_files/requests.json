@@ -1,0 +1,49 @@
+{
+    "1": {
+        "request": "SELECT Flight, Date_and_Time, SUM(Number_of_bonuses) FROM departure d JOIN (SELECT Number_of_bonuses, id_departure FROM ticket t JOIN scale s ON s.Starting_price <= t.price AND t.price <= s.Final_price) n USING (id_departure) GROUP BY Flight, Date_and_Time;",
+        "schema": ["Flight", "Date_and_time", "Number_of_bonuses"],
+        "file_name": "first_request.html"
+    },
+    
+    "2": {
+        "request": "SELECT Airport_1, Airport_2, MONTHNAME(Date_and_Time), Class, COUNT(*) FROM ticket JOIN departure USING (id_departure) WHERE YEAR(Date_and_Time) = 2017 GROUP BY Airport_1, Airport_2, MONTHNAME(Date_and_Time), Class;",
+        "schema": ["Airport_1", "Airport_2", "Month", "Class", "Quantity"],
+        "file_name": "second_request.html"
+    },
+    
+    "3": {
+        "request": "SELECT passenger.* FROM passenger JOIN ticket USING (id_passenger) WHERE Price = (SELECT MAX(Price) FROM ticket JOIN departure USING (id_departure) WHERE Flight = 'XXX');",
+        "schema": ["Id", "Full_name", "Birthday", "Bonuses", "Data_update_date", "Passport_number"],
+        "file_name": "third_request.html"
+    },
+    
+    "4": {
+        "request": "SELECT passenger.* FROM passenger LEFT JOIN ticket USING (id_passenger) WHERE id_ticket IS NULL;",
+        "schema": ["Id", "Full_name", "Birthday", "Bonuses", "Data_update_date", "Passport_number"],
+        "file_name": "fourth_request.html"
+    },
+    
+    "5": {
+        "request": "SELECT p.* FROM passenger p LEFT JOIN (SELECT id_passenger, id_ticket FROM ticket WHERE YEAR(Date_of_purchase) = 2014 AND MONTH(Date_of_purchase) = 3) t USING (id_passenger) WHERE id_ticket IS NULL",
+        "schema": ["Id", "Full_name", "Birthday", "Bonuses", "Data_update_date", "Passport_number"],
+        "file_name": "fifth_request.html"
+    },
+    
+    "6": {
+        "request": "SELECT * FROM pass_ticket WHERE count_ticket = (SELECT MAX(count_ticket) FROM pass_ticket);",
+        "schema": ["Id", "Full_name", "Birthday", "Bonuses", "Data_update_date", "Passport_number", "Count_ticket"],
+        "file_name": "sixth_request.html"
+    },
+    
+    "procedure": {
+        "request": "SELECT Flight, Total_cost, Bonus_amount FROM bonus_program.report;",
+        "schema": ["Flight", "Total_cost", "Bonus_amount"],
+        "file_name": "result.html"
+    },
+    
+    "users": {
+        "request": "SELECT id_user, Username, Full_name, Birthday FROM user;",
+        "schema": ["Id", "Username", "Full_name", "Birthday"],
+        "file_name": "editing_users.html"
+    }
+}

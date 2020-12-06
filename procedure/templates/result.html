@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>Отчет</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='style.css')}}">
+</head>
+<body>
+    <h2 align="center">Отчет</h2>
+    <table>
+        <tr>
+            <th>Flight</td>
+            <th>Total cost</th>
+            <th>Bonus amount</th>
+        </tr>
+        {%for string in strings%}
+        <tr>
+            <td>{{string['Flight']}}</td>
+            <td>{{string['Total_cost']}}</td>
+            <td>{{string['Bonus_amount']}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+    <p align="center"><a href="http://127.0.0.1:5000/menu/" class="button">Назад</a></p>
+</body>
+</html>

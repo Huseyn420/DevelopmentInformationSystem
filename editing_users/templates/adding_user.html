@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>Adding user</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='style.css')}}">
+</head>
+<body>
+    <h2 align="center">Список пользователей</h2>
+    <div align="center", class="inquiries">
+        <form action="" method=POST>
+            Name: &nbsp <input type=text id="full_name" name="full_name"> <br><br>
+            Username: &nbsp <input type=text id="username" name="username"> <br><br>
+            Password: &nbsp <input type=password id="password" name="password"> <br><br>
+            Birthday: &nbsp <input type=date id="birthday" name="birthday" max="2000-12-31"> <br><br>
+            Position: &nbsp <input type=radio name="position" value="1">Директор &nbsp <input type=radio name="position" value="2">Кассир
+            <div align=center>
+                <input type = submit value="Назад" name="back" class="button">
+                <input type = submit value="Добавить пользователя" name="add" class="button">
+            </div>
+       </form>
+    </div>
+</body>
+</html>

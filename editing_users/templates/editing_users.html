@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>Пользователи</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='style.css')}}">
+</head>
+<body>
+    <h2 align="center">Список пользователей</h2>
+    <div align="center", class="inquiries">
+        {%for user in users%}
+        <form action="" method=POST>
+            <input type=hidden name="id" value={{user.Id}}>
+                <div>
+                Логин: {{user.Username}}<br>
+                Имя: {{user.Full_name}}<br>
+                Дата рождения: {{user.Birthday}}<br>
+                <input type = submit value="Удалить" name="delete" class="button">
+                <input type = submit value="Редактирование" name="edit" class="button"><br><br>
+            </div>
+        </form>
+        {%endfor%}
+    </div>
+    <br><br>
+
+    <form action="" method=POST>
+        <div align=center>
+            <input type = submit value="Назад" name="back" class="button">
+            <input type = submit value="Добавить пользователя" name="add" class="button">
+        </div>
+    </form>
+</body>
+</html>
